@@ -2,6 +2,7 @@ import { CheckService } from "../domain/use-cases/checks/check-service";
 import { FileSystemDatasource } from "../infra/datasources/file-system.datasource";
 import { LogRepositoryImpl } from "../infra/repositories/log.repository.impl";
 import { CronService } from "./cron/cron-service"
+import { EmailService } from "./email/email.service";
 
 const fileSystemLogRepository = new LogRepositoryImpl(
 	new FileSystemDatasource(),
@@ -13,6 +14,19 @@ export class Server {
 
 		//mandar email
 
+		// const emailService = new EmailService();
+		// emailService.sendEmailWithFileSystemLogs('daro.qp@gmail.com');
+
+		// const emailService = new EmailService();
+		// emailService.sendEmail({
+		// 	to: 'daro.qp@gmail.com',
+		// 	subject: 'Log del sistema',
+		// 	htmlBody: `
+		// 		<h3>Log del sistema - NOC </h3>
+		// 		<p>Cosas que no vienen al caso</p>
+		// 		<p>Ver logs adjuntos</p>
+		// 	`
+		// })
 
 		// CronService.createJob(
 		// 	'*/5 * * * * *',
