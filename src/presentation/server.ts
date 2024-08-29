@@ -1,4 +1,5 @@
 import { CheckService } from "../domain/use-cases/checks/check-service";
+import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infra/datasources/file-system.datasource";
 import { LogRepositoryImpl } from "../infra/repositories/log.repository.impl";
 import { CronService } from "./cron/cron-service"
@@ -8,13 +9,22 @@ const fileSystemLogRepository = new LogRepositoryImpl(
 	new FileSystemDatasource(),
 )
 
+const emailService = new EmailService();
+
 export class Server {
 	public static start(){
 		console.log('Server started...')
 
-		//mandar email
+		//TODO: mandar email
 
-		// const emailService = new EmailService();
+		// new SendEmailLogs(
+		// 	emailService,
+		// 	fileSystemLogRepository
+		// ).execute('daro.qp@gmail.com')
+
+		// const emailService = new EmailService(
+		// fileSystemLogRepository
+		// );
 		// emailService.sendEmailWithFileSystemLogs('daro.qp@gmail.com');
 
 		// const emailService = new EmailService();

@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 import { envs } from '../../config/adapters/envs.adapter';
+import { LogRepository } from '../../domain/repository/log.repository';
+import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 interface SendEmailOptions {
 	to: string | string[];
@@ -23,6 +25,7 @@ export class EmailService {
 		}
 	});
 
+	constructor(){}
 
 	async sendEmail(options: SendEmailOptions): Promise<boolean> {
 		
@@ -37,7 +40,8 @@ export class EmailService {
 				attachments: attachements,
 			});
 
-			console.log(sentInformation)
+			// console.log(sentInformation)
+
 			return true;
 		} catch (error) {
 
