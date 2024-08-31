@@ -1,7 +1,5 @@
 import nodemailer from 'nodemailer';
 import { envs } from '../../config/adapters/envs.adapter';
-import { LogRepository } from '../../domain/repository/log.repository';
-import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 interface SendEmailOptions {
 	to: string | string[];
