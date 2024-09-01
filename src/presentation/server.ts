@@ -1,14 +1,23 @@
 import { CheckService } from "../domain/use-cases/checks/check-service";
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infra/datasources/file-system.datasource";
 import { MongoLogDatasource } from "../infra/datasources/mongo-log.datasource";
+import { PostgresLogDatasource } from "../infra/datasources/postgres-log.datasource";
 import { LogRepositoryImpl } from "../infra/repositories/log.repository.impl";
 import { CronService } from "./cron/cron-service"
 import { EmailService } from "./email/email.service";
 
-const logRepository = new LogRepositoryImpl(
-	// new FileSystemDatasource(),
+const postgresLogRepository = new LogRepositoryImpl(
+	new PostgresLogDatasource(),
+)
+
+const mongoLogRepository = new LogRepositoryImpl(
 	new MongoLogDatasource(),
+)
+
+const fileLogRepository = new LogRepositoryImpl(
+	new FileSystemDatasource(),
 )
 
 const emailService = new EmailService();
@@ -46,8 +55,8 @@ export class Server {
 				// new CheckService().execute('https://google.com.ar');
 				// const url = 'http://localhost:3000';
 				const url = 'http://google.com.ar';
-				new CheckService(
-					logRepository,
+				new CheckServiceMultiple(
+					[postgresLogRepository, mongoLogRepository, fileLogRepository],
 					() => console.log(`${url} is ok`),
 					(error) => console.log(error)
 					).execute(url);
