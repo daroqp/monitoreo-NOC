@@ -1,5 +1,5 @@
 import { envs } from "./config/adapters/envs.adapter";
-import { MongoDatabase } from "./data/mongo";
+import { MongoDatabase } from "./data/mongodb";
 import { Server } from "./presentation/server"
 
 (async() => {
