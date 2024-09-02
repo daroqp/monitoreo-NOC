@@ -134,7 +134,9 @@ const config: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: [
+		"<rootDir>/setupTest.ts"
+	],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -190,7 +192,13 @@ const config: Config = {
   // verbose: undefined,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
-  // watchPathIgnorePatterns: [],
+  watchPathIgnorePatterns: [
+		"/node_modules",
+		"<rootDir>/postgres",
+		"<rootDir>/mongo",
+		"<rootDir>/postgres-test",
+		"<rootDir>/mongo-test",
+	],
 
   // Whether to use watchman for file crawling
   // watchman: true,
