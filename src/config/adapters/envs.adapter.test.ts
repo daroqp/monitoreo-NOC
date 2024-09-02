@@ -7,7 +7,7 @@ describe('envs adapter.ts', () => {
 			PORT: 3000,
 			MAILER_SERVICE: 'gmail',
 			MAILER_EMAIL: 'daro.qp@gmail.com',
-			MAILER_SECRET_KEY: 'exkezehqsfjyegur',
+			MAILER_SECRET_KEY: '************',
 			PROD: false,
 			MONGO_URL: 'mongodb://daro:123456789@localhost:27018',
 			MONGO_DB_NAME: 'NOC-TEST',
