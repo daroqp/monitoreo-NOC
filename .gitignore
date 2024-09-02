@@ -6,4 +6,8 @@ logs/
 .env
 
 mongo/
+mongo-test/
 postgres/
+postgres-test/
+
+coverage/
